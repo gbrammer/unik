@@ -33,6 +33,8 @@ jobs:
     if: github.event_name == 'push' &&
         github.event.ref_type == 'tag' &&
         github.ref == 'refs/heads/${{ github.event.repository.default_branch }}'
+    permissions:
+      id-token: write
     steps:
       - uses: actions/download-artifact@v4
         with:
