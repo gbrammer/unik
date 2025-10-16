@@ -32,10 +32,11 @@ Repository = "https://github.com/gbrammer/unik"
 Issues = "https://github.com/gbrammer/unik/issues"
 
 [project.optional-dependencies]
-dev = [
+test = [
     "pytest>=7.0",
     "build>=0.10.0",
     "twine>=4.0.0",
+    "flake8"
 ]
 
 [tool.setuptools]
