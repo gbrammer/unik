@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "unik"
+version = "0.1.0"
+description = "Helper for unique entries in lists / arrays"
+readme = "README.md"
+authors = [
+    {name = "Gabe Brammer", email = "gbrammer@example.com"}
+]
+license = {file = "LICENSE"}
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+requires-python = ">=3.8"
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/gbrammer/unik"
+Repository = "https://github.com/gbrammer/unik"
+Issues = "https://github.com/gbrammer/unik/issues"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "build>=0.10.0",
+    "twine>=4.0.0",
+]
+
+[tool.setuptools]
+packages = ["unik"]
