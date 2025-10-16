@@ -5,10 +5,10 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "unik"
 version = "0.1.0"
-description = "Helper for unique entries in lists / arrays"
+description = "Provide functionality for working with selections of unique items in lists / arrays"
 readme = "README.md"
 authors = [
-    {name = "Gabe Brammer", email = "gbrammer@example.com"}
+    {name = "Gabriel Brammer", email = "gbrammer@gmail.com"}
 ]
 license = {file = "LICENSE"}
 classifiers = [
@@ -22,7 +22,9 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
 ]
 requires-python = ">=3.8"
-dependencies = []
+dependencies = [
+    "numpy"
+]
 
 [project.urls]
 Homepage = "https://github.com/gbrammer/unik"

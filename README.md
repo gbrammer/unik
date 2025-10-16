@@ -1,6 +1,6 @@
 # unik
 
-Helper for unique entries in lists / arrays
+Provide functionality for working with selections of unique items in lists / arrays
 
 ## Installation
 
@@ -13,53 +13,54 @@ pip install unik
 ## Usage
 
 ```python
-from unik import unique, unique_count, is_unique
+>>> import numpy as np
+>>> from unik import Unique
 
-# Get unique items from a list (preserving order)
-items = [1, 2, 2, 3, 1, 4]
-print(unique(items))  # [1, 2, 3, 4]
+>>> items = [1, 2, 2, 2, 3, 1, 4, 3]
+>>> un = Unique(items, verbose=True)
+   N  value     
+====  ==========
+   2           1
+   3           2
+   2           3
+   1           4
+  
+>>> print(un.info(sort_counts=True))
+   N  value     
+====  ==========
+   1           4
+   2           1
+   2           3
+   3           2
 
-# Get unique items without preserving order (faster)
-print(unique(items, preserve_order=False))  # [1, 2, 3, 4] (order may vary)
+>>> items = np.array(['apples', 'apples', 'oranges', 'apples', 'grapes'])
+>>> un = Unique(items, verbose=True)
+   N  value     
+====  ==========
+   3  apples    
+   1  grapes    
+   1  oranges   
 
-# Count occurrences of unique items
-print(unique_count(items))  # {1: 2, 2: 2, 3: 1, 4: 1}
+>>> print(np.array(un.values)[un.counts > 1])
+['apples']
 
-# Check if all items are unique
-print(is_unique([1, 2, 3]))  # True
-print(is_unique([1, 2, 2]))  # False
-```
+>>> another_array = np.array(['tree', 'tree', 'tree', 'tree', 'vine'])
+>>> for i in un.unique_index():
+>>>     print(f'{items[i]} grow on a {another_array[i]}')
+apples grow on a tree
+grapes grow on a vine
+oranges grow on a tree
 
-## Features
+# __get__ builtin returns boolean array
+>>> print(un['apples'])
+[ True  True False  True False]
 
-- **`unique(items, preserve_order=True)`**: Returns a list of unique items
-  - `preserve_order=True` (default): Preserves the order of first occurrence
-  - `preserve_order=False`: Uses set for faster operation (order not guaranteed)
+>>> print(items[~un['apples']])
+['oranges' 'grapes']
 
-- **`unique_count(items)`**: Returns a dictionary with items as keys and their counts as values
+>>> print(another_array[~un['apples']])
+['tree' 'vine']
 
-- **`is_unique(items)`**: Returns `True` if all items in the list are unique, `False` otherwise
-
-## Development
-
-To install for development:
-
-```bash
-git clone https://github.com/gbrammer/unik.git
-cd unik
-pip install -e ".[dev]"
-```
-
-Run tests:
-
-```bash
-pytest
-```
-
-Build the package:
-
-```bash
-python -m build
 ```
 
 ## License
