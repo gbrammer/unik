@@ -5,7 +5,7 @@ A simple utility to work with unique elements in lists and arrays.
 """
 import numpy as np
 
-from version import __version__
+from .version import __version__
 
 class Unique(object):
     def __init__(self, array, verbose=True, **kwargs):
